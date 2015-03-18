@@ -1,0 +1,28 @@
+ <div id="section-odd splash_image">
+          <%= link_to image_tag(@listing.image.url(:original), :width => "100%"), @listing.image.url %>
+          </div>
+          <div id = "section-first">
+            <h1> <%= @listing.street_address %>, <%= @listing.city %>, <%= @listing.state %> <%= @listing.area_code %></h1>
+            <% number_baths = @listing.number_full_baths + (@listing.number_half_baths / 2) %>
+            <h3> FOR SALE: <%= number_to_currency(@listing.listing_price, precision: 0) %> | <%= @listing.number_bedrooms %> Bedrooms &middot; <%= number_baths %> Bathrooms &middot; <%= number_with_delimiter(@listing.living_area) %> sqft</h3>
+          </div>
+          <div id = "section-odd">
+            <strong>Description: </strong><%= @listing.description %>
+            <ul>
+              <li>Lot Size: <%= @listing.lot_size %></li>
+              <li>Taxes: <%= @listing.taxes %> </li>
+              <li>Living Levels: <%= @listing.number_living_levels %></li>
+              <li>Year Built: <%= @listing.year_built %></li>
+            </ul>
+          </div>
+          <div id = "section-even">
+            <h3>Features</h3>
+            <ul>
+              <li>Master Bathroom: <%= @listing.master_bathroom %></li>
+              <li>Number of Garage Spaces: <%= @listing.garage_spaces %> </li>
+              <li>Number of Parking Spaces: <%= @listing.parking_spaces %></li>
+              <li>Waterfront: <%= @listing.waterfront %></li>
+              <li>Type of Heating System: <%= @listing.heating %></li>
+              <li>Type of Cooling System: <%= @listing.cooling %></li>
+            </ul>
+          </div>

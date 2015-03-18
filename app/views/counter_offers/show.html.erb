@@ -1,0 +1,51 @@
+<div id="main-container" class="container">
+      <div class="row">
+        <div id="content" class="col-md-8">
+<h1>Counter Offer for <%=@listing.street_address%></h1>
+ <hr>
+</p>
+<h3><strong>Offer Financials</strong></h3>
+  <table class = "table">
+    <tr>
+      <th></th><th></th><th>Delta</th>
+    </tr>
+    <tr>
+      <td>Offer Price</td>
+      <td><%= number_to_currency(@counter_offer.offer_price, precision: 0) %></td>
+      <td><%= number_to_currency(@offer_delta, precision: 0) %></td>
+    </tr>
+    <td>Offer Deposit: </td>
+    <td><%= number_to_currency(@counter_offer.offer_deposit) %></td>
+    <td><%= number_to_currency(@deposit_delta) %></td>
+    <tr>
+    <td>P&S Deposit</td>
+    <td><%= number_to_currency(@counter_offer.ps_deposit) %></td>
+    <td><%= number_to_currency(@ps_delta, precision: 0) %></td>
+    </tr>
+  </table>
+  <h3>Important Dates</h3>
+<div><strong>Offer Expiration: </strong><%= @counter_offer.offer_expiration %></div>
+<div><strong>Purchase & Sale Date: </strong><%= @counter_offer.purchase_sale_date %></div>
+<div><strong>Mortgage Contingency Date: </strong><%= @counter_offer.mortgage_contingency_date %></div>
+<div><strong>Closing Date:</strong><%= @counter_offer.closing_date %></div>
+</p>
+<h3>Offer Terms</h3>
+<div><strong>Financing Amount:</strong><%= number_to_currency(@counter_offer.financing_amount) %></div>
+<div><strong>Offer Terms:</strong><%= @counter_offer.offer_terms %></div>
+<%= link_to 'Counter Offer', {:controller => :counter_offers, :action => :new, :id => @offer.id, :listing_id => @offer.listing_id}, class: "btn btn-primary", role: "button"  %>
+        </div>
+  <div class="col-md-4">
+    <div class="comparison">
+      <h2>Original Offer</h2>
+      <%= render 'offers/offer' %></div>
+    <div class="offer_image"><%= image_tag @listing.image.url, :width => "100%" %></div>
+    </p>
+    <div><h3>This offer is <span class="ratio"><%= number_to_percentage(@offer_ratio * 100, precision: 2)%></span> of the listing price.</h3></div>
+    <% if @finance_ratio==0 %>
+      <div><h3>This is an all cash offer.</h3></div>
+      <% else %>
+  <% end %>
+  </div>
+      </div>
+</div>
+      

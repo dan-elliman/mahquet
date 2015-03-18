@@ -1,0 +1,64 @@
+<%= simple_form_for @offer, :url => { :action => :create, :id => @listing.id}, html: {multipart: true, class: 'form-inline'} do |f| %>
+<div class = "container">
+  <div class = "row">
+    <div class="col-md-8">
+      <% if @offer.errors.any? %>
+        <div id = "error_explanation">
+          <h2><%= pluralize(@offer.errors.count, "error") %> prohibited this product from being saved:</h2>
+          <ul>
+            <% @offer.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <%end%>
+          </ul>
+        </div>
+      <% end %>
+      <h1>Build Your Offer</h1>
+      <div>You are offering to buy the property described as <strong><%= @listing.street_address %> </strong></div>
+        <h3>Purchase Price</h3>
+          <div>A real estate offer typically contains three important numbers.  The first is the total amount you are offering to pay
+          for the piece of property.  The second two are "deposits" that go towards your total purchase amount.  The first deposit is due
+          when you make your offer (today) and the second is due at the time of your Purchase & Sale execution.  We will break each of these figures down below.</div>
+            <hr>
+            <div class="form-group">
+            <%= f.input :offer_price, hint: 'This is the total sum of what you would want to offer.' %>
+            </div>
+            <div class="form-group">
+            <%= f.input :offer_deposit, label: 'Offer deposit amount', hint: 'This is the amount you want to put down as a deposit with this offer.  This amount is typically $500 - $1,000.'%>
+            </div>
+            <div class="form-group">
+            <%= f.input :ps_deposit, label: 'Purchase & Sales deposit amount', hint: 'This is the amount you want to put down as a deposit at the time you sign the Purchase & Sales Agreement.  This amount can vary but is usually 5% of the offer amount.'  %>
+            </div>
+        <h3>Important Dates</h3>
+        <div>There are a few important events that have to be planned for during a real estate sale.  We are going to outline those events and the timing of them now.</div>
+            <hr>
+               <div class="form-group">
+            <%= f.input :offer_expiration, label: 'Offer expiration date', hint: 'Offers are typically valid for a defined amount of time.  One business day is standard but this can be customized.  Your offer will still be here after it expires but will stop being "Active."'  %>
+             </div>
+            <div class="form-group">
+            <%= f.input :purchase_sale_date, label: 'Purchase and Sales Signature Date' %>
+            </div>
+            <div class = "form-group">
+            <%= f.input :closing_date, hint: 'This is the date in which you will complete your real estate transaction.'%>
+            </div>
+        <h3>Deal Terms</h3>
+        <div>This section focuses on the non-financial terms of the transaction.  This portion provides you a chance to make custom requests as well as tells the seller how high or low of a risk profile you are as a buyer.</div>
+            <hr>
+            <div class="form-group">
+            <%= f.input :financing_amount, hint: 'Do you intend on using a mortgage to finance your transaction?  If so, you need to let the seller know how much you will be financing here.' %>
+            </div>
+            <div class="form-group">
+            <%= f.input :mortgage_contingency_date, hint: 'The mortgage contingency date is the deadline for when you will have your financing organized.  Speak with a mortgage advisor or legal representative for guidance.' %>
+            </div>
+            <div class="form-group">
+            <%= f.input :offer_terms, hint: 'This is an area reserved for custom requests that you would like to include in your offer.' %>
+            </div>
+            <div class="actions">
+            <%= f.button :submit %>
+            </div>
+    </div>
+    <div class="col-md-4">
+      <%= render 'listings/listingdisplay' %>
+    </div>
+</div>
+</div>
+<% end %>

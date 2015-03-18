@@ -1,0 +1,84 @@
+<%= simple_form_for @listing, html: {multipart: true, class: 'form-horizontal'} do |f| %>
+  <% if @listing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
+
+      <ul>
+      <% @listing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.input :street_address, label: "Address Line 1" %>
+  </div>
+  <div class="form-group">
+    <%= f.input :street_address_2, label: "Address Line 2" %>
+  </div>
+  <div class="form-group">
+    <%= f.input :city, label: "City" %>
+  </div>
+  <div class="form-group">
+    <%= f.input :state, label: "State" %>
+  </div>
+  <div class="form-group">
+    <%= f.input :area_code, label: "Area Code" %>
+  </div>
+  <div class="form-group">
+    <%= f.input :listing_price, label: "Listing Price" %>
+  </div>
+   <div class="form-group">
+    <%= f.input :description, label: "Property Description" %>
+  </div>
+   <div class="form-group">
+    <%= f.input :image, label: "Property Image" %>
+  </div>
+   <div class="form-group">
+    <%= f.input :number_bedrooms, label: "Number of Bedrooms" %>
+  </div>
+    <div class="form-group">
+    <%= f.input :number_full_baths, label: "Number of Full Baths" %>
+  </div>
+     <div class="form-group">
+    <%= f.input :number_half_baths, label: "Number of Half Baths" %>
+  </div>
+  <div class="form-group">
+    <%= f.input :living_area, label: "Living Area" %>
+  </div>
+   <div class="form-group">
+    <%= f.input :lot_size, label: "Property Lot Size" %>
+  </div>
+    <div class="form-group">
+    <%= f.input :taxes, label: "Annual Property Taxes" %>
+  </div>
+     <div class="form-group">
+    <%= f.input :number_living_levels, label: "Number of Living Levels" %>
+  </div>
+      <div class="form-group">
+    <%= f.input :master_bathroom, label: "Does the property have a master bathroom?" %>
+  </div>
+      <div class="form-group">
+    <%= f.input :garage_spaces, label: "Number of Garage Spaces" %>
+  </div>
+      <div class="form-group">
+    <%= f.input :parking_spaces, label: "Number of Parking Spaces" %>
+  </div>
+     <div class="form-group">
+    <%= f.input :year_built, label: "Year built" %>
+  </div>
+     <div class="form-group">
+    <%= f.input :waterfront, label: "Waterfront?" %>
+  </div>
+       <div class="form-group">
+    <%= f.input :heating, label: "Type of heating system" %>
+  </div>
+    <div class="form-group">
+    <%= f.input :cooling, label: "Type of cooling system" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+  </div>

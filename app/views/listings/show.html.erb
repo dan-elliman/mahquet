@@ -1,0 +1,31 @@
+ <div id="main-container" class="container-fluid">
+      <div class="row">
+        <div id="content" class="col-xs-12">
+         <% if user_signed_in? %>
+         <% if @listing_author.to_i == current_user.id %>
+    <% @listing_offers = Offer.where(listing_id: @listing.id) %>
+    <h3>Listing Dashboard</h3>
+    <p>Only you, as the author of this listing, can see this dashboard.  Use it to edit your listing, view offers and arrange showings.</p>
+    <%= link_to 'Edit Your Listing', edit_listing_path(@listing), role: "button", class: "btn btn-default" %>
+    <%= link_to 'Delete Your Listing', @listing, method: :delete, data: {confirm: 'Are you sure you want to delete your listing?  It will be deleted forever.'}, class: "btn btn-default", role: "button" %>
+      <% if @listing_offers.blank? %>
+        <h3>There are no active offers on your listing.</h3>
+       <%else%>
+      <h3>You have active offers</h3>
+    <% @listing_offers.each do |l| %>
+    <%= link_to 'View Your Offer', offer_path(id: l.id), :class => "btn btn-primary", :role => "button" %> </p>
+  <%end%>
+       <%end%>
+    <% else %>
+  <div><%= link_to 'Make an Offer', {:controller => :offers, :action => :new, :id => @listing.id}, class: "btn btn-success btn-block", role: "button" %></div>
+  <div><%= link_to 'Schedule a Showing', {:controller => :offers, :action => :new, :id => @listing.id}, class: "btn btn-info btn-block", role: "button" %></div>
+      <%end%>
+        <% else %>
+          <div><%= link_to 'Make an Offer', {:controller => :offers, :action => :new, :id => @listing.id}, class: "btn btn-success btn-block", role: "button" %></div>
+  <div><%= link_to 'Schedule a Showing', {:controller => :offers, :action => :new, :id => @listing.id}, class: "btn btn-info btn-block", role: "button" %></div>
+<% end %>
+       <%= render 'listingdisplay' %>
+        </div>
+      </div>
+    </div>
+  

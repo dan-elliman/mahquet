@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <title>Mahquet</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="<%= controller.controller_name %>">
+<%= render 'shared/navigation' %>
+<% if notice || alert %>
+<p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+<% end %>
+<%= yield %>
+
+</body>
+</html>

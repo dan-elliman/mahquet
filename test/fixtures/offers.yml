@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  offer_price: 1
+  offer_terms: MyText
+  offer_expiration: 2015-03-10
+  listing_id: 1
+
+two:
+  offer_price: 1
+  offer_terms: MyText
+  offer_expiration: 2015-03-10
+  listing_id: 1

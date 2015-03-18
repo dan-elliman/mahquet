@@ -1,0 +1,44 @@
+<div class="js-packery" data-packery-options='{ "itemSelector": ".item"}'>
+<div class="item w2 splash">
+  <h1>Mahquet connects home buyers and sellers directly - creating a simpler real estate transaction.
+  <div><%=link_to 'Sell your House', new_listing_path, :class => "splash_link" %></div>
+</h1>
+</div>
+<div class="item log_in">
+  <% if user_signed_in? %>
+  <%= current_user.email %> </br>
+  <% @user_listings = Listing.where(user_id: current_user) %>
+    <% if @user_listings != nil %>
+      <h2>My Active Listings</h2>
+    <% @user_listings.each do |l| %>
+    <%= l.street_address %></br>
+    
+    <%end%>
+  <% else %>
+    <% end %>
+    <% @user_offers = Offer.where(user_id: current_user) %>
+    <% if @user_offers != nil %>
+      <h2>My Active Offers</h2>
+    <% @user_offers.each do |l| %>
+    <%= l.listing_id %> </br>
+  <%end%>
+  <% else %>
+    <% end %>
+  <% else %>
+  <%= render 'user' %>
+  <% end %>
+</div>
+<% @listings.each do |listing| %>
+<div class="item">
+  <div class="item_title"><h2><%= listing.street_address %></h2></div>
+  <div class="listing_image"><%= link_to image_tag(listing.image.url(:original), class: "item_image"), listing_path(id: listing.id) %></div>
+  <div class="item_city"><h3><%= "#{listing.city}, #{listing.state}" %></h3></div>
+  <div class="item_list_price"><h2 class="price"><%= number_to_currency(listing.listing_price, precision: 0) %></h2></div>
+  <div class="item_offer_button"><%= link_to 'Make an Offer', :controller => :offers, :action => :new, :id => listing.id, :class => "offer_button" %></div>
+  <div class="item_showing_button"><%= link_to 'Schedule a Showing', :controller => :offers, :action => :new, :id => listing.id, :class => "offer_button" %></div>
+  <% if false %>
+  <span class="item_showing_button"><%= button_to 'Schedule a Showing', showings_path(listing_id: listing), id:"showing_button" %></span>
+  <% end %>
+</div>
+<% end %>
+</div>

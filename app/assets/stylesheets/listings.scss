@@ -1,0 +1,170 @@
+// Place all the styles related to the listings controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Place all the styles related to the Market controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.item { width: 33.33%; }
+.item.w2{ width: 66.66%}
+
+.splash{
+    height: 300px;
+    background: #007DBA;
+    color: white;
+}
+
+.splash h1{
+    padding-left: 15px;
+    line-height: 40px;
+}
+
+a.splash_link {
+    color: black;
+}
+
+a:hover.splash_link {
+  color: #514f4f;
+}
+
+.user_index{
+    padding-left: 15px;
+}
+
+/****** Market Page Log-In Box *******/
+
+.log_in{
+    height: 300px;
+    background: #00816D;
+    color: white;
+}
+
+.sign_in{
+    text-align: center;
+}
+
+.submit_login{
+    text-align: center;
+}
+
+.log_in_form #user_email, .log_in_form #user_password{
+    font-family: 'Raleway', Helvetica,Arial,sans-serif;
+    font-size: large;
+    display: block;
+    width: 70%;
+    height: 35px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.facebook_login_image{
+    padding-top: 10px;
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.item_image{
+    width: 100%;
+}
+
+.item_title, .item_city, .item_list_price{
+    position: absolute;
+    color: white;
+}
+
+.item_title{
+    left: 10px;
+    text-shadow: 1px 1px #000;
+}
+
+.item_city{
+    left: 10px;
+    top: 40px;
+}
+
+.item_list_price{
+    left: 10px;
+    bottom: 90px;
+    text-shadow: 1px 1px #000;
+}
+
+.item .button_to {
+    display: inline;
+}
+
+.item_offer_button , .item_showing_button{
+    width: 49.5%;
+    height: 42px;
+    -moz-border-radius: 0.1875em;
+    -webkit-border-radius: 0.1875em;
+    border-radius: 0.1875em;
+    border: none;
+    display: inline-block;
+    font-size: 14px;
+    text-align: center;
+    font-size: large;
+    padding-top: 12px;
+    font-weight: 400;
+}
+
+.item_offer_button, .item_offer_button a{
+    background: #642F6C;
+    color: white;
+    text-decoration: none;
+}
+
+.item_showing_button, .item_showing_button a{
+    background: #8D89A5;
+    color: white;
+    text-decoration: none;
+}
+
+/******* Listing Show Pages *******/
+
+#section-first{
+  background: #642F6C;
+  padding: 20px 0;
+  color: white;
+  text-align: center;
+}
+
+#section-first h2{
+    color: #EEEEEE;
+}
+
+#section-even{
+    background: #EEEEEE;
+    padding: 20px 0;
+}
+
+#section-odd{
+    background: white;
+    padding: 20px 0;
+    width: 80%;
+    margin: auto;
+    font-size: large;
+    line-height: 1.8;
+}
+
+@media screen and (max-width: 600px) {
+    
+.item, .item.w2 {
+    width: 100%;
+}
+
+.splash h1{
+    padding: 0 5px;
+}
+
+.splash, .log_in{
+    height: auto;
+}
+
+.item_offer_button, .item_showing_button{
+    width: 100%;
+}
+
+}

@@ -1,0 +1,23 @@
+<h3><strong>Offer Financials</strong></h3>
+  <table class = "table">
+    <tr>
+      <td>Offer Price</td>
+      <td><%= number_to_currency(@offer.offer_price, precision: 0) %></td>
+    </tr>
+    <td>Offer Deposit: </td>
+    <td><%= number_to_currency(@offer.offer_deposit) %></td>
+    <tr>
+    <td>P&S Deposit</td>
+    <td><%= number_to_currency(@offer.ps_deposit) %></td>
+    </tr>
+  </table>
+  
+  <h3>Important Dates</h3>
+<div><strong>Offer Expiration: </strong><%= @offer.offer_expiration %></div>
+<div><strong>Purchase & Sale Date: </strong><%= @offer.purchase_sale_date %></div>
+<div><strong>Mortgage Contingency Date: </strong><%= @offer.mortgage_contingency_date %></div>
+<div><strong>Closing Date:</strong><%= @offer.closing_date %></div>
+</p>
+<h3>Offer Terms</h3>
+<div><strong>Financing Amount:</strong><%= number_to_currency(@offer.financing_amount) %></div>
+<div><strong>Offer Terms:</strong><%= @offer.offer_terms %></div>

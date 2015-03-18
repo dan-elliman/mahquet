@@ -1,0 +1,61 @@
+<%= simple_form_for @counter_offer, :url => { :action => :create, :id => @offer.id, :listing_id => @counter_offer.listing_id}, html: {multipart: true, class: 'form-inline'} do |f| %>
+<div class = "container">
+  <div class = "row">
+    <div class="col-md-8">
+      <% if @offer.errors.any? %>
+        <div id = "error_explanation">
+          <h2><%= pluralize(@offer.errors.count, "error") %> prohibited this counter offer from being saved:</h2>
+          <ul>
+            <% @offer.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <%end%>
+          </ul>
+        </div>
+      <% end %>
+      <h1>Build Your Counter Offer</h1>
+        <h3>Purchase Price</h3>
+          <div>A real estate offer typically contains three important numbers.  The first is the total amount being offered
+          for the piece of property.  The second two are "deposits" that go towards the total purchase amount.  The first deposit is due
+          when the offer is made (today) and the second is due at the time of the Purchase & Sale execution.  We will break each of these figures down below.</div>
+            <hr>
+              <%= f.hidden_field :listing_id, value: params[:listing_id] %>
+              <%= f.hidden_field :seller_id, value: params[:seller_id] %>
+              <%= f.hidden_field :buyer_id, value: params[:buyer_id] %>
+            <div class="form-group">
+            <%= f.input :offer_price %>
+            </div>
+            <div class="form-group">
+            <%= f.input :offer_deposit, label: 'Offer deposit amount'%>
+            </div>
+            <div class="form-group">
+            <%= f.input :ps_deposit, label: 'Purchase & Sales deposit amount'%>
+            </div>
+        <h3>Important Dates</h3>
+        <div>There are a few important events that have to be planned for during a real estate sale.  We are going to outline those events and the timing of them now.</div>
+            <hr>
+               <div class="form-group">
+            <%= f.input :offer_expiration, label: 'Counter offer expiration date', hint: 'Offers are typically valid for a defined amount of time.  One business day is standard but this can be customized.  Your offer will still be here after it expires but will stop being "Active."'  %>
+             </div>
+            <div class="form-group">
+            <%= f.input :purchase_sale_date, label: 'Purchase and Sales Signature Date' %>
+            </div>
+            <div class = "form-group">
+            <%= f.input :closing_date, hint: 'This is the date in which you will complete your real estate transaction.'%>
+            </div>
+        <h3>Deal Terms</h3>
+        <div>This section focuses on the non-financial terms of the transaction.  This portion provides you a chance to make custom requests as well as tells the seller how high or low of a risk profile you are as a buyer.</div>
+            <hr>
+            <div class="form-group">
+            <%= f.input :offer_terms, hint: 'This is an area reserved for custom requests that you would like to include in your offer.' %>
+            </div>
+            <div class="actions">
+            <%= f.button :submit %>
+            </div>
+    </div>
+    <div class="col-md-4">
+      <h2>Original Offer</h2>
+      <%= render 'offers/offer' %>
+    </div>
+</div>
+</div>
+<% end %>

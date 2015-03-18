@@ -1,0 +1,23 @@
+<div id="main-container" class="container">
+      <div class="row">
+        <div id="content" class="col-md-8">
+<h1>Offer for <%=@listing.street_address%></h1>
+ <hr>
+<%= render 'offer' %>
+</p>
+<%= link_to 'Counter Offer', {:controller => :counter_offers, :action => :new, :id => @offer.id, :listing_id => @offer.listing_id, :seller_id => @listing_author, :buyer_id => @offer_author}, class: "btn btn-primary", role: "button"  %>
+        </div>
+  <div class="col-md-4">
+    <div class="offer_image"><%= image_tag @listing.image.url, :width => "100%" %></div>
+    </p>
+    <div><h3>This offer is <span class="ratio"><%= number_to_percentage(@offer_ratio * 100, precision: 2)%></span> of the listing price.</h3></div>
+    <% if @finance_ratio==0 %>
+      <div><h3>This is an all cash offer.</h3></div>
+      <% else %>
+    <div><h3>This offer includes <span class="ratio-1"><%= number_to_percentage(@finance_ratio * 100, precision: 0)%></span> financing.</h3></div>
+  <% end %>
+  </div>
+      </div>
+</div>
+      
+  

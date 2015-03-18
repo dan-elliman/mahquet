@@ -1,0 +1,57 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  street_address: MyString
+  street_address_2: MyString
+  area_code: MyString
+  state: MyString
+  listing_price: 1
+  city: MyString
+  description: MyText
+  image: 
+  number_bedrooms: 1
+  number_full_baths: 1
+  number_half_baths: 1
+  living_area: 1
+  lot_size: MyString
+  taxes: 1
+  number_living_levels: 1
+  master_bathroom: false
+  garage_spaces: 1
+  parking_spaces: 1
+  year_built: MyString
+  waterfront: false
+  heating: MyString
+  cooling: MyString
+  lead_paint: false
+  lot_description: MyString
+  sf_style: MyString
+  foundation_description: MyString
+
+two:
+  street_address: MyString
+  street_address_2: MyString
+  area_code: MyString
+  state: MyString
+  listing_price: 1
+  city: MyString
+  description: MyText
+  image: 
+  number_bedrooms: 1
+  number_full_baths: 1
+  number_half_baths: 1
+  living_area: 1
+  lot_size: MyString
+  taxes: 1
+  number_living_levels: 1
+  master_bathroom: false
+  garage_spaces: 1
+  parking_spaces: 1
+  year_built: MyString
+  waterfront: false
+  heating: MyString
+  cooling: MyString
+  lead_paint: false
+  lot_description: MyString
+  sf_style: MyString
+  foundation_description: MyString
