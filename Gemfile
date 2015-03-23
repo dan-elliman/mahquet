@@ -63,7 +63,7 @@ group :development, :test do
   # Using Twitter Bootstrap for styling
   gem 'bootstrap-sass', '~> 3.2.0'
   gem 'autoprefixer-rails'
-  gem 'simple_form'
+  gem 'simple_form', '~> 3.1.0'
   #image slider carousel
   gem 'owlcarousel-rails'
   #Backstretch jquery library for core listing pages
