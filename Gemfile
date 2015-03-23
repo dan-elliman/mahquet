@@ -22,6 +22,7 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+ gem 'simple_form', '~> 3.1.0'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -40,7 +41,13 @@ gem 'omniauth-facebook'
 # Integration between devise and FB omniauth
 gem 'cancancan', '~> 1.10'
 #Access control
-
+# Using Twitter Bootstrap for styling
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+  #image slider carousel
+gem 'owlcarousel-rails'
+  #Backstretch jquery library for core listing pages
+gem 'backstretch-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -60,13 +67,6 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   
-  # Using Twitter Bootstrap for styling
-  gem 'bootstrap-sass', '~> 3.2.0'
-  gem 'autoprefixer-rails'
-  gem 'simple_form', '~> 3.1.0'
-  #image slider carousel
-  gem 'owlcarousel-rails'
-  #Backstretch jquery library for core listing pages
-  gem 'backstretch-rails'
+  
 end
 
