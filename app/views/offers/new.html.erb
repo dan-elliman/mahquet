@@ -19,6 +19,8 @@
           for the piece of property.  The second two are "deposits" that go towards your total purchase amount.  The first deposit is due
           when you make your offer (today) and the second is due at the time of your Purchase & Sale execution.  We will break each of these figures down below.</div>
             <hr>
+            <%= f.hidden_field :buyer_id, value: current_user.id %>
+            <%= f.hidden_field :seller_id, value: @listing.user_id %>
             <div class="form-group">
             <%= f.input :offer_price, hint: 'This is the total sum of what you would want to offer.' %>
             </div>

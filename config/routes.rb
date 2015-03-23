@@ -1,10 +1,21 @@
 Rails.application.routes.draw do
+  get 'deals/new'
+
+  get 'deals/create'
+
+  get 'deals/show'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
 resources :listings
 resources :offers
 resources :counter_offers
+resources :deals do
+  collection do
+  get :counter_create
+end
+end
   # You can have the root of your site routed with "root"
   root 'listings#index'
 

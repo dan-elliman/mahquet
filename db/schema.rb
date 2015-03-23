@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150317161219) do
+ActiveRecord::Schema.define(version: 20150323023525) do
 
   create_table "counter_offers", force: :cascade do |t|
     t.integer  "offer_id"
@@ -20,6 +20,23 @@ ActiveRecord::Schema.define(version: 20150317161219) do
     t.integer  "offer_price"
     t.text     "offer_terms"
     t.date     "offer_expiration"
+    t.integer  "listing_id"
+    t.integer  "offer_deposit"
+    t.integer  "ps_deposit"
+    t.date     "purchase_sale_date"
+    t.date     "closing_date"
+    t.decimal  "financing_amount"
+    t.date     "mortgage_contingency_date"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "deals", force: :cascade do |t|
+    t.integer  "offer_id"
+    t.integer  "buyer_id"
+    t.integer  "seller_id"
+    t.integer  "deal_price"
+    t.text     "offer_terms"
     t.integer  "listing_id"
     t.integer  "offer_deposit"
     t.integer  "ps_deposit"
@@ -80,6 +97,8 @@ ActiveRecord::Schema.define(version: 20150317161219) do
     t.date     "closing_date"
     t.decimal  "financing_amount"
     t.date     "mortgage_contingency_date"
+    t.integer  "buyer_id"
+    t.integer  "seller_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -4,6 +4,7 @@
          <% if user_signed_in? %>
          <% if @listing_author.to_i == current_user.id %>
     <% @listing_offers = Offer.where(listing_id: @listing.id) %>
+    <% @counter_offer = CounterOffer.where(listing_id: @listing.id) %>
     <h3>Listing Dashboard</h3>
     <p>Only you, as the author of this listing, can see this dashboard.  Use it to edit your listing, view offers and arrange showings.</p>
     <%= link_to 'Edit Your Listing', edit_listing_path(@listing), role: "button", class: "btn btn-default" %>
@@ -12,9 +13,28 @@
         <h3>There are no active offers on your listing.</h3>
        <%else%>
       <h3>You have active offers</h3>
+   <div class="table-responsive">
+    <table class = "table table-hover">
+    <tr>
+       <th></th>
+    <th>Offer Price</th>
+    <th>Closing Date</th>
+    <th>Amount Financed</th>
+    <th></th>
+    </tr>
+    <tr>
     <% @listing_offers.each do |l| %>
-    <%= link_to 'View Your Offer', offer_path(id: l.id), :class => "btn btn-primary", :role => "button" %> </p>
+    <td><%= link_to 'View Your Offer', offer_path(id: l.id), :class => "btn btn-primary", :role => "button" %> </td>
+    <td><%= number_to_currency(l.offer_price, precision: 0) %>  </td>
+    <td><%= l.closing_date%></td>
+    <td><%= l.financing_amount %></td>
+    <% @counter_offer.where(:offer_id => l.id).each do |counter| %>
+    <td><%= link_to 'Counter Offer', counter_offer_path(id: counter.id), :class => "btn btn-primary", :role => "button" %> </td>
+  <% end %>
+    </tr>
   <%end%>
+    </table>
+    </div>
        <%end%>
     <% else %>
   <div><%= link_to 'Make an Offer', {:controller => :offers, :action => :new, :id => @listing.id}, class: "btn btn-success btn-block", role: "button" %></div>

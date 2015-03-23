@@ -1,11 +1,28 @@
 <div id="main-container" class="container">
       <div class="row">
+        <% if current_user.id == @offer.buyer_id %>
+    <% if @counter_offer != nil %>
+    <div class="alert alert-info">
+    <h3>There is an active Counter Offer for this Offer.</h3>
+    <% @counter_offer.each do |counter| %>
+    <%= link_to 'Counter Offer', counter_offer_path(id: counter.id), :class => "btn btn-primary", :role => "button" %>
+  <% end %>
+    </div>
+    <%else %>
+    <% end %>
+    <% else %>
+      <% end %>
         <div id="content" class="col-md-8">
 <h1>Offer for <%=@listing.street_address%></h1>
  <hr>
 <%= render 'offer' %>
 </p>
+<% if current_user.id == @offer.seller_id %>
+  <%= link_to 'Accept Offer', {:controller => :deals, :action => :create, :offer_id => @offer.id}, class: "btn btn-primary", role: "button"  %>
 <%= link_to 'Counter Offer', {:controller => :counter_offers, :action => :new, :id => @offer.id, :listing_id => @offer.listing_id, :seller_id => @listing_author, :buyer_id => @offer_author}, class: "btn btn-primary", role: "button"  %>
+<% else %><% end %>
+<%= link_to 'Back to Listing', listing_path(id:@listing), class: "btn btn-primary", role: "button"  %>
+        
         </div>
   <div class="col-md-4">
     <div class="offer_image"><%= image_tag @listing.image.url, :width => "100%" %></div>

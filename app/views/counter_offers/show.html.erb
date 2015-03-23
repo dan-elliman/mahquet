@@ -32,7 +32,14 @@
 <h3>Offer Terms</h3>
 <div><strong>Financing Amount:</strong><%= number_to_currency(@counter_offer.financing_amount) %></div>
 <div><strong>Offer Terms:</strong><%= @counter_offer.offer_terms %></div>
+</p>
+<% if current_user.id == @counter_offer.buyer_id %>
 <%= link_to 'Counter Offer', {:controller => :counter_offers, :action => :new, :id => @offer.id, :listing_id => @offer.listing_id}, class: "btn btn-primary", role: "button"  %>
+<%= link_to 'Accept Offer', {:controller => :deals, :action => :counter_create, :offer_id => @offer.id}, class: "btn btn-primary", role: "button"  %>
+
+<% else %>
+  <% end %>
+<%= link_to 'Back to Listing', listing_path(id:@counter_offer.listing_id), class: "btn btn-primary", role: "button"  %>
         </div>
   <div class="col-md-4">
     <div class="comparison">

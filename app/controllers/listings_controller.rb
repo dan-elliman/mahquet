@@ -1,4 +1,5 @@
 class ListingsController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_path
   
   def new
     if user_signed_in?
@@ -76,6 +77,11 @@ class ListingsController < ApplicationController
       :state, :number_bedrooms, :number_full_baths, :number_half_baths, :living_area, :lot_size, :taxes,
       :number_living_levels, :master_bathroom, :garage_spaces, :parking_spaces, :year_built, :waterfront,
       :heating, :cooling, :lead_paint, :lot_description, :sf_style, :foundation_description)
+  end
+  
+  def invalid_path
+  logger.error "Attempt to access invalid counter-offer"
+  redirect_to listings_path, notice: "Whoops!  You can't go there!  That listing doesn't exist or you don't have access to it."
   end
   
 end

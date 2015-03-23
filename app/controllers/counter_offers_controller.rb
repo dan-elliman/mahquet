@@ -1,6 +1,7 @@
 class CounterOffersController < ApplicationController
  before_action :authenticate_user!
- 
+rescue_from ActiveRecord::RecordNotFound, with: :invalid_path
+
   def new
     @offer = Offer.find(params[:id])
     @counter_offer = @offer.counter_offers.build
@@ -10,7 +11,7 @@ class CounterOffersController < ApplicationController
     @offer = Offer.find(params[:id])
     @counter_offer = @offer.counter_offers.create(counter_offer_params)
     if @counter_offer.save
-      flash[:notice] = 'Your offer has been created'
+      flash[:notice] = 'Your counter-offer has been created'
       redirect_to counter_offer_path(:id => @counter_offer.id)
     end
   end
@@ -48,5 +49,9 @@ class CounterOffersController < ApplicationController
   def counter_offer_params
     params.require(:counter_offer).permit(:offer_price, :buyer_id, :seller_id, :offer_terms, :mortgage_contingency_date, :financing_amount, :closing_date, :purchase_sale_date, :offer_deposit, :ps_deposit, :listing_id, :offer_expiration, :offer_id)
   end
-end
 
+def invalid_path
+  logger.error "Attempt to access invalid counter-offer"
+  redirect_to listings_path, notice: "Whoops!  You can't go there.  That counter offer doesn't exist or you don't have access to it."
+end
+end
