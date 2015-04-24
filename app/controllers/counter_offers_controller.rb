@@ -10,6 +10,8 @@ rescue_from ActiveRecord::RecordNotFound, with: :invalid_path
   def create
     @offer = Offer.find(params[:id])
     @counter_offer = @offer.counter_offers.create(counter_offer_params)
+    @counter_offer.active!
+    @offer.expired!
     if @counter_offer.save
       flash[:notice] = 'Your counter-offer has been created'
       redirect_to counter_offer_path(:id => @counter_offer.id)
@@ -32,22 +34,18 @@ rescue_from ActiveRecord::RecordNotFound, with: :invalid_path
   
   def check_auth
     @buyer_id = CounterOffer.find(params[:id]).buyer_id
-    logger.debug "Buyer ID is: #{@buyer_id}"
     @seller_id = CounterOffer.find(params[:id]).seller_id
-    logger.debug "Seller ID is: #{@seller_id}"
     @logged_in = current_user.id
-    logger.debug "Current User is #{@logged_in}"
     if @buyer_id == @logged_in || @seller_id == @logged_in
       return true
     else
       return false
     end
-    
   end
   
   private
   def counter_offer_params
-    params.require(:counter_offer).permit(:offer_price, :buyer_id, :seller_id, :offer_terms, :mortgage_contingency_date, :financing_amount, :closing_date, :purchase_sale_date, :offer_deposit, :ps_deposit, :listing_id, :offer_expiration, :offer_id)
+    params.require(:counter_offer).permit(:offer_price, :buyer_id, :seller_id, :author, :offer_terms, :mortgage_contingency_date, :financing_amount, :closing_date, :purchase_sale_date, :offer_deposit, :ps_deposit, :listing_id, :offer_expiration, :offer_id)
   end
 
 def invalid_path

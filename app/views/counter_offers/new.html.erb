@@ -18,23 +18,28 @@
           for the piece of property.  The second two are "deposits" that go towards the total purchase amount.  The first deposit is due
           when the offer is made (today) and the second is due at the time of the Purchase & Sale execution.  We will break each of these figures down below.</div>
             <hr>
+              <%= f.hidden_field :author, value: current_user.id %>
               <%= f.hidden_field :listing_id, value: params[:listing_id] %>
               <%= f.hidden_field :seller_id, value: params[:seller_id] %>
               <%= f.hidden_field :buyer_id, value: params[:buyer_id] %>
             <div class="form-group">
-            <%= f.input :offer_price %>
+            <%= f.input :offer_price, input_html: {value: @offer.offer_price}%>
             </div>
             <div class="form-group">
-            <%= f.input :offer_deposit, label: 'Offer deposit amount'%>
+            <%= f.input :offer_deposit, label: 'Offer deposit amount', input_html: {value: @offer.offer_deposit}%>
             </div>
             <div class="form-group">
-            <%= f.input :ps_deposit, label: 'Purchase & Sales deposit amount'%>
+            <%= f.input :ps_deposit, label: 'Purchase & Sales deposit amount', input_html: {value: @offer.ps_deposit}%>
             </div>
         <h3>Important Dates</h3>
         <div>There are a few important events that have to be planned for during a real estate sale.  We are going to outline those events and the timing of them now.</div>
             <hr>
                <div class="form-group">
-            <%= f.input :offer_expiration, label: 'Counter offer expiration date', hint: 'Offers are typically valid for a defined amount of time.  One business day is standard but this can be customized.  Your offer will still be here after it expires but will stop being "Active."'  %>
+            <%= f.input :offer_expiration, as: :date,
+                day: 7,
+                start_year: Date.today.year + 5,
+                label: 'Counter offer expiration date', hint: 'Offers are typically valid for a defined amount of time.  One business day is standard but this can be customized.
+            Your offer will still be here after it expires but will stop being "Active."' %>
              </div>
             <div class="form-group">
             <%= f.input :purchase_sale_date, label: 'Purchase and Sales Signature Date' %>

@@ -10,15 +10,22 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
+ *= require_tree .
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import 'bootstrap-datetimepicker';
 
 .header{
         background: black;
+}
+
+p {
+  font-family: raleway, verdana, arial, helvetica, sans-serif;
+  font-size: 18px;
+  line-height: 30px;
 }
 
 body{
@@ -53,3 +60,9 @@ h1{
     .alert{
         margin: 0;
     }
+    
+#footer{
+        height: 70px;
+        width: 100%;
+        background: #8D89A5;
+}

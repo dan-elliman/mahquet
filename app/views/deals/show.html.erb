@@ -1,2 +1,60 @@
-<h1>Deals#show</h1>
-<p>Find me in app/views/deals/show.html.erb</p>
+<div id="main-container" class="container-fluid">
+      <div class="row">
+        <div id="content" class="col-md-12">
+          <h1>Congratulations!  You have a deal.</h1>
+          <div class="row contact-section">
+               <div id="content" class="col-md-6">
+                <h3>Buyer Information</h3>
+                <% @buyer = User.where(id: @deal.buyer_id) %>
+                <% @buyer.each do |b| %>
+                <div><%= b.first_name %> <%= b.last_name %></div>
+                <div><%= b.email %></div>
+              <% end %>
+                </div>
+               <div id="content" class="col-md-6">
+                <h3>Seller Information</h3>
+                <% @seller = User.where(id: @deal.seller_id) %>
+                <% @seller.each do |b| %>
+                <div><%= b.first_name %> <%= b.last_name %></div>
+                <div><%= b.email %></div>
+              <% end %>
+                </div>
+          </div>
+          <div class="row">
+            <div id="content" class="col-md-9">
+              <h3><strong>Offer Financials</strong></h3>
+  <table class = "table">
+    <tr>
+      <td>Sales Price</td>
+      <td><%= number_to_currency(@deal.deal_price, precision: 2) %></td>
+    </tr>
+    <td>Offer Deposit: </td>
+    <td><%= number_to_currency(@deal.offer_deposit) %></td>
+    <tr>
+    <td>P&S Deposit</td>
+    <td><%= number_to_currency(@deal.ps_deposit) %></td>
+    </tr>
+  </table>
+  
+  <h3>Important Dates</h3>
+<div><strong>Purchase & Sale Date: </strong><%= @deal.purchase_sale_date %></div>
+<div><strong>Mortgage Contingency Date: </strong><%= @deal.mortgage_contingency_date %></div>
+<div><strong>Closing Date:</strong><%= @deal.closing_date %></div>
+</p>
+<h3>Offer Terms</h3>
+<div><strong>Financing Amount:</strong><%= number_to_currency(@deal.financing_amount) %></div>
+<div><strong>Deal Terms:</strong><%= @deal.offer_terms %></div>
+            </div>
+          <div class="row">
+            <div id="content" class="col-md-3">
+              <h3>You're Almost Done!</h3>
+              <h4>Let's formalize this with some signatures and paperwork.</h4>
+              <div>All the links to paperwork will be here.  Purchase and Sales docs will prepopulate and
+              be included as attachments.  Offer docs will be created and a link to e-sign will be here.
+              This e-signature will formalize the offer.</div>
+            </div>
+          </div>
+          </div>
+      </div>
+</div>
+      

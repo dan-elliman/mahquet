@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :pages
+
   get 'deals/new'
 
   get 'deals/create'
@@ -8,9 +10,12 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
+resources :users, only: [:show]
 resources :listings
 resources :offers
 resources :counter_offers
+resources :showings
+resources :pages
 resources :deals do
   collection do
   get :counter_create

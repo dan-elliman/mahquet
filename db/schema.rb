@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150323023525) do
+ActiveRecord::Schema.define(version: 20150409000808) do
 
   create_table "counter_offers", force: :cascade do |t|
     t.integer  "offer_id"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20150323023525) do
     t.date     "mortgage_contingency_date"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.integer  "status"
+    t.integer  "author"
   end
 
   create_table "deals", force: :cascade do |t|
@@ -81,6 +83,7 @@ ActiveRecord::Schema.define(version: 20150323023525) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "user_id"
+    t.integer  "status"
   end
 
   create_table "offers", force: :cascade do |t|
@@ -98,6 +101,28 @@ ActiveRecord::Schema.define(version: 20150323023525) do
     t.decimal  "financing_amount"
     t.date     "mortgage_contingency_date"
     t.integer  "buyer_id"
+    t.integer  "seller_id"
+    t.integer  "status"
+  end
+
+  create_table "pages", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "subtitle"
+  end
+
+  create_table "showings", force: :cascade do |t|
+    t.datetime "showing_time"
+    t.integer  "listing_id"
+    t.integer  "status"
+    t.string   "comments"
+    t.integer  "user_id"
     t.integer  "seller_id"
   end
 

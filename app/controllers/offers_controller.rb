@@ -11,6 +11,7 @@ class OffersController < ApplicationController
     @listing = Listing.find(params[:id])
     @offer = @listing.offers.build(offer_params)
     @offer.user_id = current_user.id if current_user
+    @offer.active!
     if @offer.save
       flash[:notice] = 'Your offer has been created'
       redirect_to offer_path(:id => @offer.id)

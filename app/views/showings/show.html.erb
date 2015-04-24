@@ -1,0 +1,28 @@
+<div id="main-container" class="container">
+      <div class="row">
+        <div id="content" class="col-md-8">
+          <h1>Showing for <%= @listing.street_address %></h1>
+          <% case @showing.status
+             when 'unconfirmed' %>
+          <div class="alert alert-warning">
+        <h4>This showing is still unconfirmed.  You will receive an email when the seller confirms availability.</h4>
+        </div></p>
+        <% when 'confirmed' %>
+          <div class="alert alert-success">
+        <h4>This showing is confirmed.  Enjoy!</h4>
+        </div></p>
+        <% when 'cancelled' %>
+          <div class="alert alert-danger">
+        <h4>This showing cannot be accomodated by the seller.  Please try rescheduling.</h4>
+        </div></p>
+        <%else%>
+    <% end %>
+    <div id="map-container">
+  <div id="map-canvas"></div>
+</div>
+        </div>
+        <div class="col-md-4">
+      <%= render 'listings/listingdisplay' %>
+    </div>
+      </div>
+</div>

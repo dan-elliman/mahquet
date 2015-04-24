@@ -10,9 +10,23 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-datetimepicker
+//= require bootstrap
 //= require turbolinks
 //= require packery.pkgd
-//= require bootstrap-sprockets
+//= require moment
+//= require pickers
 //= require_tree .
+
+window.onload = function() {
+    if (window.jQuery) {  
+        // jQuery is loaded  
+        alert("Yeah!");
+    } else {
+        // jQuery is not loaded
+        alert("Doesn't Work");
+    }
+}

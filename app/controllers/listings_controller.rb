@@ -12,6 +12,7 @@ class ListingsController < ApplicationController
   def create
     @listing = Listing.create(listing_params)
     @listing.user_id = current_user.id if current_user
+    @listing.active!
     if @listing.save
       redirect_to listings_path
     end

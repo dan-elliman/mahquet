@@ -6,4 +6,7 @@ class Offer < ActiveRecord::Base
   validates :offer_price, :offer_deposit, :ps_deposit, :purchase_sale_date, :closing_date, :financing_amount, presence: true
   validates :offer_price, :offer_deposit, :ps_deposit, numericality: {greater_than_or_equal_to: 0.01}
   validates :financing_amount, numericality: {greater_than_or_equal_to: 0}
+  
+  #define statuses for Offers
+  enum status: [ :active, :expired ]
 end

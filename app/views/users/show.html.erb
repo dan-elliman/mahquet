@@ -1,0 +1,26 @@
+<div id="main-container" class="container">
+      <div class="row">
+        <div id="content" class="col-md-9">
+          <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+          <%= @user.email %>
+        </div>
+         <div id="content" class="col-md-3">
+          <% @user_listings = Listing.where(user_id: current_user) %>
+    <% if @user_listings != nil %>
+      <h2>My Active Listings</h2>
+    <% @user_listings.each do |l| %>
+    <%= link_to l.street_address, listing_path(id: l.id), :class => "btn btn-primary btn-block", :role => "button" %></p>
+  <%end%>
+  <% else %>
+      <h4>No Listings</h4>
+<%=link_to 'Sell your House', new_listing_path, :class => "btn btn-info btn-lg" %>
+  <% end %>
+   <% @user_offers = Offer.where(user_id: current_user) %>
+    <% if @user_offers != nil %>
+      <h2>My Recent Offers</h2>
+    <% @user_offers.each do |l| %>
+    <%= link_to number_to_currency(l.offer_price, precision: 0), offer_path(id: l.id), :class => "btn btn-warning btn-block", :role => "button" %></p>
+  <%end%>
+  <% else %> <% end %>
+      </div>
+</div>

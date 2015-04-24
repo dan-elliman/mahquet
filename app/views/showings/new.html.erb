@@ -1,0 +1,35 @@
+<%= simple_form_for @showing, :url => { :action => :create, :id => @listing.id}, html: {multipart: true, class: 'form-inline'} do |f| %>
+<div class = "container">
+  <div class = "row" data-no-turbolink>
+    <div class="col-md-8">
+      <% if @showing.errors.any? %>
+        <div id = "error_explanation">
+          <h2><%= pluralize(@showing.errors.count, "error") %> prohibited this Showing from being created:</h2>
+          <ul>
+            <% @showing.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <%end%>
+          </ul>
+        </div>
+      <% end %>
+    <h1>Schedule Your Showing for <%= @listing.street_address %></h1>
+    <p>Awesome.  You'd like to check out this home - good luck!  We want to make this as easy on you as possible.  Please just request the time and day 
+    that makes the most sense for you.  We will alert the homeowner of your showing and you will be notified as soon as they accept the request or ask for a different time.</p>
+    <%= f.hidden_field :id, value: params[:listing_id] %>
+    <div class="form-group">
+            <%= f.input :showing_time  %>
+            </div>
+    <div class="form-group">
+            <%= f.input :comments, hint: 'Special requests.' %>
+            </div>
+            <div class="actions">
+            <%= f.button :submit %>
+            </div>
+    </div>
+    <div class="col-md-4">
+      <%= render 'listings/listingdisplay' %>
+    </div>
+  </div>
+</div>
+<%end%>
+  

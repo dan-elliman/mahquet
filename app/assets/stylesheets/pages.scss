@@ -1,0 +1,42 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.page{
+    padding: 0;
+}
+
+.hero-image{
+    width:100%;
+}
+
+.logo{
+    width:95%;
+    padding-top: 15px;
+}
+
+.body{
+    padding-top: 85px;
+}
+
+.headline{
+    position: absolute;
+    top: 65%;
+    width: 100%;
+    text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.headline-title{
+    font-size: 60px;
+    text-shadow: 1px 1px #000;
+    font-family: Raleway, arial, helvetica, sans-serif;
+    font-weight: 800;
+}
+
+.headline-subtitle{
+    text-shadow: 1px 1px #000;
+    font-family: Raleway, arial, helvetica, sans-serif;
+    font-weight: 500;
+}
